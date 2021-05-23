@@ -7,7 +7,7 @@ using OpenQA.Selenium.Support.UI;
 namespace csharp_example
 {
     [TestFixture]
-    public class MyFirstTest
+    public class AdminPanelLoginTests
     {
         private IWebDriver driver;
         private WebDriverWait wait;
@@ -20,11 +20,12 @@ namespace csharp_example
         }
 
         [Test]
-        public void FirstTest()
+        public void AdminPanelLoginTest()
         {
-            driver.Url = "http://www.google.com/";
-            driver.FindElement(By.Name("q")).SendKeys("webdriver" + Keys.Enter);
-            Assert.AreEqual("webdriver - Поиск в Google", driver.Title);
+            driver.Url = "http://localhost/litecart/admin/";
+            driver.FindElement(By.Name("username")).SendKeys("admin");
+            driver.FindElement(By.Name("password")).SendKeys("admin");
+            driver.FindElement(By.Name("login")).Click();
         }
 
         [TearDown]
