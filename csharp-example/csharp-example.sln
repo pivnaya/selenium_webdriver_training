@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "charp-example", "charp-example\charp-example.csproj", "{F40F51C6-E6E0-4C1D-B9F0-3817940FECE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp-example", "csharp-example\csharp-example.csproj", "{F40F51C6-E6E0-4C1D-B9F0-3817940FECE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

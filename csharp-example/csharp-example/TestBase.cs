@@ -32,26 +32,44 @@ namespace csharp_example
         {
             if (!tlDriver.IsValueCreated)
             {
-                //запуск Chrome
+                #region запуск Chrome
                 ChromeOptions options = new ChromeOptions();
+                options.PageLoadStrategy = PageLoadStrategy.Normal;
                 options.AddArgument("--start-maximized");
                 driver = new ChromeDriver(options);
+                #endregion
 
-                //запуск FF
+                #region запуск FF
                 //driver = new FirefoxDriver();
+                //driver.Manage().Window.Maximize();
+                #endregion
 
-                //запуск FF Nightly
+                #region запуск FF Nightly
                 //FirefoxDriverService service = FirefoxDriverService.CreateDefaultService();
                 //service.FirefoxBinaryPath = @"C:\Program Files\Firefox Nightly\firefox.exe";
                 //driver = new FirefoxDriver(service);
+                #endregion
 
-                //запуск Edge
+                #region запуск Edge
                 //driver = new EdgeDriver();
+                #endregion
 
                 tlDriver.Value = driver;
                 wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+                driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
             }
             return tlDriver.Value;
+        }
+
+        public bool IsElementPresent(By by)
+        {
+            return driver.FindElements(by).Count > 0;
+        }
+
+        public void WaitUntilInvisible(By by)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(5)).Until(ExpectedConditions.InvisibilityOfElementLocated(by));
         }
     }
 }

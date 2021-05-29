@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace csharp_example
 {
@@ -13,7 +12,7 @@ namespace csharp_example
         {
             driver.Url = "http://www.google.com/";
             driver.FindElement(By.Name("q")).SendKeys("webdriver" + Keys.Enter);
-            wait.Until(ExpectedConditions.TitleIs("webdriver - Поиск в Google"));
+            Assert.AreEqual("webdriver - Поиск в Google", driver.Title);
         }
     }
 }
