@@ -6,7 +6,6 @@ namespace csharp_example
 {
     public class LitecartRegistrationTests : LitecartTastBase
     {
-
         [Test]
         public void LitecartRegistrationTest()
         {
