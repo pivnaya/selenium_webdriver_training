@@ -62,11 +62,13 @@
   <ItemGroup>
     <Compile Include="AdminPanelTests\AdminPanelLoginTests.cs" />
     <Compile Include="AdminPanelTests\AdminPanelTestBase.cs" />
-    <Compile Include="AdminPanelTests\AdminPanelTests.cs" />
+    <Compile Include="AdminPanelTests\AdminPanelMenuTests.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="GoogleTests.cs" />
-    <Compile Include="LitecartTests.cs" />
+    <Compile Include="LitecartTests\LitecartRegistrationTests.cs" />
+    <Compile Include="LitecartTests\LitecartProductTests.cs" />
+    <Compile Include="LitecartTests\LitecartTastBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBase.cs" />
   </ItemGroup>
