@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
 
 namespace csharp_example
@@ -79,6 +80,49 @@ namespace csharp_example
                 Assert.True(fontDiscountPriceOnProductPage.IsBold(), "Цена со скидкой на странице товара не жирная!");
                 Assert.Greater(fontDiscountPriceOnProductPage.Size, fontPriceOnProductPage.Size, "Цена со скидкой на странице товара не больше обычной цены!");
             });
+        }
+
+        [Test]
+        public void LitecartBasketProductTest()
+        {
+            for(int i = 0; i < 3; i++)
+            {
+                driver.FindElement(By.ClassName("product")).Click();
+
+                if (IsElementPresent(By.ClassName("options")))
+                {
+                    new SelectElement(driver.FindElement(By.Name("options[Size]"))).SelectByIndex(1);
+                }
+
+                int quantity = int.Parse(driver.FindElement(By.CssSelector("span.quantity")).Text);
+
+                driver.FindElement(By.Name("add_cart_product")).Click();
+
+                WaitUntilTextPresent(driver.FindElement(By.CssSelector("span.quantity")), (quantity + 1).ToString());
+
+                driver.Url = "http://localhost/litecart/";
+            }
+
+            driver.FindElement(By.XPath("//a[contains(.,'Checkout')]")).Click();
+
+            while (driver.FindElements(By.XPath("//em[contains(.,'There are no items in your cart')]")).Count == 0)
+            {
+                IList<IWebElement> sliderProducts = driver.FindElements(By.CssSelector("li.shortcut"));
+                if (sliderProducts.Count > 0)
+                {
+                    IList<IWebElement> tableProducts = driver.FindElements(By.CssSelector(".dataTable td.item"));
+
+                    sliderProducts[0].Click();
+                
+                    driver.FindElement(By.Name("remove_cart_item")).Click();
+
+                    WaitUntilNumberLess(By.CssSelector(".dataTable td.item"), tableProducts.Count);
+                }
+                else
+                {
+                    driver.FindElement(By.Name("remove_cart_item")).Click();
+                }
+            }
         }
     }
 }

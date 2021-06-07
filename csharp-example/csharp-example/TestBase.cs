@@ -63,7 +63,18 @@ namespace csharp_example
 
         public void WaitUntilInvisible(By by)
         {
-            new WebDriverWait(driver, TimeSpan.FromSeconds(5)).Until(ExpectedConditions.InvisibilityOfElementLocated(by));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
         }
+
+        public void WaitUntilTextPresent(IWebElement element, string text)
+        {
+            wait.Until(ExpectedConditions.TextToBePresentInElement(element, text));
+        }
+
+        public void WaitUntilNumberLess(By locator, int count)
+        {
+            wait.Until(d => d.FindElements(locator).Count < count);
+        }
+
     }
 }
