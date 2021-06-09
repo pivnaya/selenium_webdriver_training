@@ -90,5 +90,10 @@ namespace csharp_example
         {
             return wait.Until(AnyWindowOtherThan(oldWindows));
         }
+
+        public void WaitUntilVisible(By by)
+        {
+            wait.Until(ExpectedConditions.ElementIsVisible(by));
+        }
     }
 }

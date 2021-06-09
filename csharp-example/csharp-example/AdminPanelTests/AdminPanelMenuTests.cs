@@ -160,7 +160,9 @@ namespace csharp_example
             driver.Url = "http://localhost/litecart/admin/?app=catalog&doc=catalog";
 
             driver.FindElement(By.XPath("//a[contains(.,'Add New Product')]")).Click();
-            Thread.Sleep(1000);
+            
+            WaitUntilVisible(By.CssSelector("li.active"));
+            WaitUntilVisible(By.Name("name[en]"));
 
             Random rnd = new Random();
             int rndValue = rnd.Next(0, 100);
@@ -183,6 +185,7 @@ namespace csharp_example
             (driver as IJavaScriptExecutor).ExecuteScript($"arguments[0].value = '{dateTo}'",
                 driver.FindElement(By.Name("date_valid_to")));
 
+            Thread.Sleep(5000); //Задержка чтобы увидеть, что поля на первой вкладке не заполняются
             driver.FindElement(By.XPath("//a[contains(.,'Information')]")).Click();
 
             new SelectElement(driver.FindElement(By.Name("manufacturer_id"))).SelectByIndex(1);
