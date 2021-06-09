@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using System.Linq;
 
 namespace csharp_example
 {
@@ -76,5 +78,17 @@ namespace csharp_example
             wait.Until(d => d.FindElements(locator).Count < count);
         }
 
+        public static Func<IWebDriver, string> AnyWindowOtherThan(ICollection<string> oldWindows)
+        {
+            return (driver) =>
+            {
+                return driver.WindowHandles.ToList().Except(oldWindows).FirstOrDefault();
+            };
+        }
+
+        public string WaitForWindowOtherThan(ICollection<string> oldWindows)
+        {
+            return wait.Until(AnyWindowOtherThan(oldWindows));
+        }
     }
 }
