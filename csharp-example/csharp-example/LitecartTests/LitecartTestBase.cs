@@ -2,7 +2,7 @@
 
 namespace csharp_example
 {
-    public class LitecartTastBase : TestBase
+    public class LitecartTestBase : TestBase
     {
         public void Logout()
         {

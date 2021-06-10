@@ -4,7 +4,7 @@ using System;
 
 namespace csharp_example
 {
-    public class LitecartRegistrationTests : LitecartTastBase
+    public class LitecartRegistrationTests : LitecartTestBase
     {
         [Test]
         public void LitecartRegistrationTest()

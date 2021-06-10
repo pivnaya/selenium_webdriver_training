@@ -4,7 +4,6 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 
 namespace csharp_example
 {
@@ -162,13 +161,14 @@ namespace csharp_example
             driver.FindElement(By.XPath("//a[contains(.,'Add New Product')]")).Click();
             
             WaitUntilVisible(By.CssSelector("li.active"));
-            WaitUntilVisible(By.Name("name[en]"));
+            By productNameLocator = By.Name("name[en]");
+            WaitUntilVisible(productNameLocator);
 
             Random rnd = new Random();
             int rndValue = rnd.Next(0, 100);
             string productName = $"TestName{rndValue}";
 
-            driver.FindElement(By.Name("name[en]")).SendKeys(productName);
+            driver.FindElement(productNameLocator).SendKeys(productName);
             driver.FindElement(By.Name("code")).SendKeys("123");
             driver.FindElement(By.CssSelector("[name^= product_groups]")).Click();
             IWebElement quantity = driver.FindElement(By.Name("quantity"));
@@ -185,7 +185,6 @@ namespace csharp_example
             (driver as IJavaScriptExecutor).ExecuteScript($"arguments[0].value = '{dateTo}'",
                 driver.FindElement(By.Name("date_valid_to")));
 
-            Thread.Sleep(5000); //Задержка чтобы увидеть, что поля на первой вкладке не заполняются
             driver.FindElement(By.XPath("//a[contains(.,'Information')]")).Click();
 
             new SelectElement(driver.FindElement(By.Name("manufacturer_id"))).SelectByIndex(1);
