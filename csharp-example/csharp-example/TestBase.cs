@@ -5,8 +5,11 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Support.UI;
 using System.Linq;
+using OpenQA.Selenium.Remote;
 
 namespace csharp_example
 {
@@ -49,6 +52,23 @@ namespace csharp_example
 
             #region запуск Edge
             //driver = new EdgeDriver();
+            #endregion
+
+            #region удаленный запуск
+            //driver = new RemoteWebDriver(new Uri("http://192.168.0.221:4444/wd/hub"), new ChromeOptions());
+            //driver = new RemoteWebDriver(new Uri("http://192.168.0.221:4444/wd/hub"), new FirefoxOptions());
+            //driver = new RemoteWebDriver(new Uri("http://192.168.0.221:4444/wd/hub"), new InternetExplorerOptions());
+            #endregion
+
+            #region запуск в облаке
+            //var capability = new SafariOptions();
+            //capability.AddAdditionalCapability("os_version", "Big Sur");
+            //capability.AddAdditionalCapability("browser", "safari");
+            //capability.AddAdditionalCapability("browser_version", "latest");
+            //capability.AddAdditionalCapability("os", "OS X");
+            //capability.AddAdditionalCapability("browserstack.user", "пользователь");
+            //capability.AddAdditionalCapability("browserstack.key", "ключ");
+            //driver = new RemoteWebDriver(new Uri("https://hub-cloud.browserstack.com/wd/hub/"), capability);
             #endregion
 
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));

@@ -18,7 +18,7 @@
 
         public Color(string color)
         {
-            string[] RGBa = color.Substring(5).Split(',');
+            string[] RGBa = color.Replace("rgba", "rgb").Substring(4).TrimEnd(')').Split(',');
 
             R = int.Parse(RGBa[0].Trim());
             G = int.Parse(RGBa[1].Trim());
