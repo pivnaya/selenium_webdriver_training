@@ -91,7 +91,7 @@ namespace csharp_example
 
                 if (IsElementPresent(By.ClassName("options")))
                 {
-                    new SelectElement(driver.FindElement(By.Name("options[Size]"))).SelectByIndex(1);
+                    new SelectElement(driver.FindElement(By.Name("options[Size]"))).SelectByText("Small");
                 }
 
                 int quantity = int.Parse(driver.FindElement(By.CssSelector("span.quantity")).Text);
