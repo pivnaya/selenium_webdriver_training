@@ -36,6 +36,14 @@ namespace csharp_example
             ChromeOptions options = new ChromeOptions();
             options.PageLoadStrategy = PageLoadStrategy.Normal;
             options.AddArgument("--start-maximized");
+
+            //трафик через прокси
+            //Proxy proxy = new Proxy();
+            //proxy.Kind = ProxyKind.Manual;
+            //proxy.HttpProxy = "localhost:8866";
+            //proxy.SslProxy = "localhost:8866";
+            //options.Proxy = proxy;
+
             var driver = new ChromeDriver(options);
             #endregion
 
