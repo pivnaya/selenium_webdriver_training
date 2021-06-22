@@ -122,7 +122,7 @@ namespace csharp_example
 
                 link.Click();
 
-                string newWindow = WaitForWindowOtherThan(oldWindows);
+                string newWindow = appHelper.WaitForWindowOtherThan(oldWindows);
 
                 driver.SwitchTo().Window(newWindow);
                 driver.Close();

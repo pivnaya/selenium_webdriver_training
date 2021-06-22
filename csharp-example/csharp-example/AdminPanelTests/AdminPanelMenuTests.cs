@@ -24,7 +24,7 @@ namespace csharp_example
                 {
                     IWebElement app = driver.FindElement(By.CssSelector($"li#app-:nth-child({i})"));
                     app.Click();
-                    Assert.IsTrue(IsElementPresent(By.TagName("h1")));
+                    Assert.IsTrue(appHelper.IsElementPresent(By.TagName("h1")));
 
                     int j = 2;
 
@@ -34,7 +34,7 @@ namespace csharp_example
                         {
                             IWebElement doc = driver.FindElement(By.CssSelector($"li[id^=doc-]:nth-child({j})"));
                             doc.Click();
-                            Assert.IsTrue(IsElementPresent(By.TagName("h1")));
+                            Assert.IsTrue(appHelper.IsElementPresent(By.TagName("h1")));
                         }
                         catch (NoSuchElementException)
                         {

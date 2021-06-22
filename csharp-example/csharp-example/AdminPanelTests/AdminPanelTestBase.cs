@@ -11,7 +11,7 @@ namespace csharp_example
             driver.FindElement(By.Name("password")).SendKeys("admin");
             driver.FindElement(By.Name("login")).Click();
 
-            WaitUntilInvisible(By.Id("loader"));
+            appHelper.WaitUntilInvisible(By.Id("loader"));
         }
     }
 }

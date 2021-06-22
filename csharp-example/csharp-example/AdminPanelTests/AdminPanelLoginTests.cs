@@ -11,7 +11,7 @@ namespace csharp_example
         public void AdminPanelLoginTest()
         {
             Login();
-            Assert.IsTrue(IsElementPresent(By.CssSelector("[title = Logout]")));
+            Assert.IsTrue(appHelper.IsElementPresent(By.CssSelector("[title = Logout]")));
         }
     }
 }

@@ -22,9 +22,9 @@ namespace csharp_example
 
             driver.FindElement(By.XPath("//a[contains(.,'Add New Product')]")).Click();
 
-            WaitUntilVisible(By.CssSelector("li.active"));
+            appHelper.WaitUntilVisible(By.CssSelector("li.active"));
             By productNameLocator = By.Name("name[en]");
-            WaitUntilVisible(productNameLocator);
+            appHelper.WaitUntilVisible(productNameLocator);
 
             Random rnd = new Random();
             int rndValue = rnd.Next(0, 100);
@@ -67,7 +67,7 @@ namespace csharp_example
 
             driver.FindElement(By.Name("save")).Click();
 
-            Assert.IsTrue(IsElementPresent(By.XPath($"//a[contains(.,'{productName}')]")), "Товара нет на странице!");
+            Assert.IsTrue(appHelper.IsElementPresent(By.XPath($"//a[contains(.,'{productName}')]")), "Товара нет на странице!");
         }
 
         [Test]
